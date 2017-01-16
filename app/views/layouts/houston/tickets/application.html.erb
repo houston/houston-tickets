@@ -6,5 +6,12 @@
   <%= javascript_include_tag "houston/tickets/application" %>
 <% end %>
 
+<% content_for :project_banner do %>
+  <% if @project %>
+    <%= render partial: "houston/tickets/ticket_tracker_refresh", locals: {project: @project} if @project.ticket_tracker.supports_any?(:syncing_tickets, :syncing_milestones) %>
+    <%= render partial: "houston/tickets/new_ticket", locals: {project: @project} %>
+  <% end %>
+<% end %>
+
 <%# Houston's default layout %>
 <%= render template: "layouts/application" %>

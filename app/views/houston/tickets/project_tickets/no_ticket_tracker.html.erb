@@ -1,0 +1,13 @@
+<% content_for :title do %>
+<h1 class="project-banner <%= @project.color %>">
+  <small>New Ticket for</small> <%= @project.name %> <small>
+</h1>
+<% end %>
+
+<div class="form-horizontal callout callout-banner">
+  <div class="controls">
+    <h3 style="margin-bottom: 0.25em;">No Ticket Tracker specified for this project.</h3>
+    <p>To create tickets for this project, we need to know what ticket tracker it uses.</p>
+    <p><%= link_to "OK. Let me enter that now.", main_app.edit_project_path(@project, anchor: "ticket_tracker") %></p>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 require "houston/tickets/engine"
 require "houston/tickets/configuration"
+require "houston/adapters/ticket_tracker"
+require "unfuddle"
 
 module Houston
   module Tickets
@@ -22,30 +24,38 @@ module Houston
 
 
   # Register events that will be raised by this module
-  #
-  #    register_events {{
-  #      "tickets:create" => params("tickets").desc("Tickets was created"),
-  #      "tickets:update" => params("tickets").desc("Tickets was updated")
-  #    }}
 
-
-  # Add a link to Houston's global navigation
-  #
-  #    add_navigation_renderer :tickets do
-  #      name "Tickets"
-  #      icon "fa-thumbs-up"
-  #      path { Houston::Tickets::Engine.routes.url_helpers.tickets_path }
-  #      ability { |ability| ability.can? :read, Project }
-  #    end
+   register_events {{
+     "task:committed" => params("task").desc("A commit mentioning this task was created"),
+     "task:completed" => params("task").desc("A task was completed"),
+     "task:reopened"  => params("task").desc("A task was reopened")
+   }}
 
 
   # Add a link to feature that can be turned on for projects
-  #
-  #    add_project_feature :tickets do
-  #      name "Tickets"
-  #      icon "fa-thumbs-up"
-  #      path { |project| Houston::Tickets::Engine.routes.url_helpers.project_tickets_path(project) }
-  #      ability { |ability, project| ability.can? :read, project }
-  #    end
+
+  Houston.add_project_feature :ideas do
+    name "Ideas"
+    path { |project| Houston::Tickets::Engine.routes.url_helpers.project_open_ideas_path(project) }
+    ability { |ability, project| ability.can?(:read, project.tickets.build) }
+  end
+
+  Houston.add_project_feature :bugs do
+    name "Bugs"
+    path { |project| Houston::Tickets::Engine.routes.url_helpers.project_open_bugs_path(project) }
+    ability { |ability, project| ability.can?(:read, project.tickets.build) }
+  end
+
+
+  # Add buttons to the Project Header
+
+  Houston.add_project_header_command :ticket_tracker_refresh do
+    partial "houston/tickets/ticket_tracker_refresh"
+    ability { |ability, project| project.ticket_tracker.supports_any?(:syncing_tickets, :syncing_milestones) }
+  end
+
+  Houston.add_project_header_command :new_ticket do
+    partial "houston/tickets/new_ticket"
+  end
 
 end

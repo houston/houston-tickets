@@ -6,6 +6,7 @@ require "dummy/houston"
 Rails.application.initialize! unless Rails.application.initialized?
 
 require "rails/test_help"
+require "houston/test_helpers"
 
 if ENV["CI"] == "true"
   require "minitest/reporters"
@@ -20,7 +21,18 @@ end
 # from other libraries to be shown.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
+FactoryGirl.factories.clear
+FactoryGirl.definition_file_paths = [File.expand_path("../factories", __FILE__)]
+FactoryGirl.find_definitions
+
+
+Houston.observer.async = false
+Houston.triggers.async = false
+
+
 class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
+  include Houston::TestHelpers
 
   # Load fixtures from the engine
   self.fixture_path = File.expand_path("../fixtures", __FILE__)

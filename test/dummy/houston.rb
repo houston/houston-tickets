@@ -13,6 +13,13 @@ Houston.config do
   mailer_sender "houston@test.com"
 
   # Mount this module on the dummy Houston application.
-  use :tickets
+  use :tickets do
+    ticket_types({
+      "Chore"       => "909090",
+      "Feature"     => "8DB500",
+      "Enhancement" => "3383A8",
+      "Bug"         => "C64537"
+    })
+  end
 
 end
