@@ -21,6 +21,7 @@ end
 # from other libraries to be shown.
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
+
 FactoryGirl.factories.clear
 FactoryGirl.definition_file_paths = [File.expand_path("../factories", __FILE__)]
 FactoryGirl.find_definitions

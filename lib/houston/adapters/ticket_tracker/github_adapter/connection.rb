@@ -86,7 +86,7 @@ module Houston
           attr_reader :repo_path, :config
 
           def client
-            @client ||= Octokit::Client.new(Houston.config.github.pick(:access_token).merge(auto_paginate: true))
+            @client ||= Octokit::Client.new(Houston::Commits.config.github.pick(:access_token).merge(auto_paginate: true))
           end
 
           def close_issue(number)

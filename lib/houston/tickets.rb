@@ -7,6 +7,10 @@ module Houston
   module Tickets
     extend self
 
+    def dependencies
+      [ :commits ]
+    end
+
     def config(&block)
       @configuration ||= Tickets::Configuration.new
       @configuration.instance_eval(&block) if block_given?
