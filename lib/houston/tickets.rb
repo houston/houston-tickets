@@ -58,4 +58,25 @@ module Houston
     partial "houston/tickets/new_ticket"
   end
 
+
+  #
+
+  Houston.accept_credentials_for "Unfuddle" do |login, password, errors|
+    begin
+      Unfuddle.with_config(username: login, password: password) { Unfuddle.instance.get("people/current") }
+    rescue Unfuddle::UnauthorizedError
+      errors.add(:base, "Invalid credentials")
+    end
+  end
+
+  Houston.accept_credentials_for "Github" do |login, password, errors|
+    begin
+      Octokit::Client.new(login: login, password: password).user
+    rescue Octokit::Forbidden
+      errors.add(:base, "Account locked")
+    rescue Octokit::Unauthorized
+      errors.add(:base, "Invalid credentials")
+    end
+  end
+
 end
