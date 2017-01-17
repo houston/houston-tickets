@@ -15,7 +15,7 @@ module Houston
 
       module ClassMethods
         def with_syncable_ticket_tracker
-          where [ "COALESCE(projects.props->'#{prop_name}', 'None') NOT IN (?)", %w{None Houston} ]
+          where [ "COALESCE(projects.props->'adapter.ticketTracker', 'None') NOT IN (?)", %w{None Houston} ]
         end
       end
 
