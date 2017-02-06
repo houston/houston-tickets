@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.6.0
--- Dumped by pg_dump version 9.6.0
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -744,7 +744,6 @@ CREATE TABLE tickets (
     updated_at timestamp without time zone,
     remote_id integer,
     expires_at timestamp without time zone,
-    extended_attributes hstore,
     tags character varying[],
     type character varying,
     closed_at timestamp without time zone,
@@ -1679,6 +1678,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20151209030113'),
 ('20151228183704'),
 ('20151228183706'),
+('20151228183708'),
 ('20160120145757'),
 ('20160317140151'),
 ('20160419230411'),
@@ -1710,6 +1710,9 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170115003303'),
 ('20170115003536'),
 ('20170115150643'),
-('20170116002818');
+('20170116002818'),
+('20170116210225'),
+('20170118005958'),
+('20170206002718');
 
 
