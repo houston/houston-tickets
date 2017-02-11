@@ -1,18 +1,19 @@
 GIT
   remote: git://github.com/houston/houston-commits.git
-  revision: c5fe85acd39b6175e1658fda219a9afc66a499b1
+  revision: a8d830c273b6a6b50ee12b743bbbd75c7baaf230
   branch: master
   specs:
     houston-commits (0.0.1)
-      houston-core (>= 0.8.0.pre)
+      houston-core (>= 0.8.0)
       octokit (~> 4.4.1)
-      rugged (~> 0.24.0)
+      rugged (~> 0.25.0)
 
 PATH
   remote: .
   specs:
     houston-tickets (0.0.1)
       boblail-unfuddle
+      houston-commits
       houston-core (>= 0.8.0.pre)
 
 GEM
@@ -50,7 +51,7 @@ GEM
       activemodel (= 5.0.1)
       activesupport (= 5.0.1)
       arel (~> 7.0)
-    activerecord-import (0.17.0)
+    activerecord-import (0.17.1)
       activerecord (>= 3.2)
     activerecord-pluck_in_batches (0.2.0)
       activerecord (>= 4.2.7, < 5.1.0)
@@ -72,7 +73,7 @@ GEM
     browser (2.3.0)
     builder (3.2.3)
     cancan (1.6.10)
-    capybara (2.11.0)
+    capybara (2.12.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -120,7 +121,7 @@ GEM
       multi_json (~> 1.0)
       sprockets (>= 2.0.0)
       tilt (>= 1.2)
-    houston-core (0.8.1)
+    houston-core (0.8.2)
       activerecord-import
       activerecord-pluck_in_batches (~> 0.2.0)
       addressable (~> 2.3.8)
@@ -163,7 +164,7 @@ GEM
       activerecord (>= 3, < 6)
       activesupport (>= 3, < 6)
     htmlentities (4.3.4)
-    i18n (0.7.0)
+    i18n (0.8.0)
     jwt (1.5.6)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -175,7 +176,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
-    minitest-reporters (1.1.13)
+    minitest-reporters (1.1.14)
       ansi
       builder
       minitest (>= 5.0)
@@ -258,7 +259,7 @@ GEM
     ruby-progressbar (1.8.1)
     rubyzip (1.1.7)
     rufus-scheduler (3.2.2)
-    rugged (0.24.6.1)
+    rugged (0.25.1.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)

@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "houston-core", ">= 0.8.0.pre"
   spec.add_dependency "boblail-unfuddle" # Implements Houston's TicketTracker::UnfuddleAdapter
+  spec.add_dependency "houston-commits"
 
   spec.add_development_dependency "bundler", "~> 1.11.2"
   spec.add_development_dependency "rake", "~> 10.0"
