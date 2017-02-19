@@ -8,7 +8,7 @@ module Houston
     extend self
 
     def dependencies
-      [ :commits ]
+      [ :commits, :credentials ]
     end
 
     def config(&block)
