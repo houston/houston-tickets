@@ -1,6 +1,7 @@
 require "houston/tickets/engine"
 require "houston/tickets/configuration"
 require "houston/adapters/ticket_tracker"
+require "houston/credentials"
 require "unfuddle"
 
 module Houston
