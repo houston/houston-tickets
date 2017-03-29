@@ -693,6 +693,26 @@ ALTER SEQUENCE tickets_id_seq OWNED BY tickets.id;
 
 
 --
+-- Name: tickets_versions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE tickets_versions (
+    id integer,
+    versioned_type character varying,
+    versioned_id integer,
+    user_type character varying,
+    user_id integer,
+    user_name character varying,
+    modifications text,
+    number integer,
+    reverted_from integer,
+    tag character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
 -- Name: user_credentials; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1336,6 +1356,48 @@ CREATE INDEX index_tickets_on_milestone_id ON tickets USING btree (milestone_id)
 
 
 --
+-- Name: index_tickets_versions_on_created_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_created_at ON tickets_versions USING btree (created_at);
+
+
+--
+-- Name: index_tickets_versions_on_number; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_number ON tickets_versions USING btree (number);
+
+
+--
+-- Name: index_tickets_versions_on_tag; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_tag ON tickets_versions USING btree (tag);
+
+
+--
+-- Name: index_tickets_versions_on_user_id_and_user_type; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_user_id_and_user_type ON tickets_versions USING btree (user_id, user_type);
+
+
+--
+-- Name: index_tickets_versions_on_user_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_user_name ON tickets_versions USING btree (user_name);
+
+
+--
+-- Name: index_tickets_versions_on_versioned_id_and_versioned_type; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_tickets_versions_on_versioned_id_and_versioned_type ON tickets_versions USING btree (versioned_id, versioned_type);
+
+
+--
 -- Name: index_users_on_authentication_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1648,6 +1710,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170307032041'),
 ('20170307035755'),
 ('20170310024505'),
-('20170329030329');
+('20170329030329'),
+('20170329164043');
 
 

@@ -1,13 +1,14 @@
 class Task < ActiveRecord::Base
 
-  versioned initial_version: true, only: [:description, :effort]
+  versioned initial_version: true, only: [:description, :effort],
+    class_name: "Houston::Tickets::Version"
 
   belongs_to :ticket
   belongs_to :project
   has_and_belongs_to_many :commits
 
   validates :project_id, :ticket_id, :number, presence: true
-  validate :description_must_be_present, :unless => :default_task?
+  validate :description_must_be_present, unless: :default_task?
 
   before_validation :set_project_id, on: :create
   before_validation :assign_number, on: :create
@@ -63,7 +64,7 @@ class Task < ActiveRecord::Base
     end
 
     def versions
-      VestalVersions::Version.where(versioned_type: "Task", versioned_id: pluck(:id))
+      Houston::Tickets::Version.where(versioned_type: "Task", versioned_id: pluck(:id))
     end
   end
 

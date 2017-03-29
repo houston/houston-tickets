@@ -66,6 +66,7 @@ PATH
       houston-commits
       houston-core (>= 0.8.0.pre)
       houston-credentials
+      houston-vestal_versions
 
 GEM
   remote: https://rubygems.org/

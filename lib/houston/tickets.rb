@@ -3,6 +3,8 @@ require "houston/tickets/configuration"
 require "houston/adapters/ticket_tracker"
 require "houston/credentials"
 require "unfuddle"
+require "vestal_versions"
+
 
 module Houston
   module Tickets
