@@ -1,6 +1,5 @@
 Houston::Tickets::Engine.routes.draw do
 
-  get "tickets/new", to: "tickets#new"
   get "tickets/:id", to: "tickets#show"
   put "tickets/:id", to: "tickets#update"
   delete "tickets/:id/close", to: "tickets#close"

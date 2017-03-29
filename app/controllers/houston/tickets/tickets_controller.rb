@@ -19,10 +19,6 @@ module Houston
         end
       end
 
-      def new
-        @projects = followed_projects.select(&:has_ticket_tracker?)
-      end
-
       def close
         authorize! :close, ticket
         ticket.close!
