@@ -13,7 +13,7 @@ module Houston
           end
 
           def build(project, repo)
-            return Houston::TicketTracker::NullConnection if repo.blank?
+            return Houston::Adapters::TicketTracker::NullConnection if repo.blank?
 
             self::Connection.new(repo)
           end
