@@ -30,6 +30,3 @@ gem "houston-core", github: "houston/houston-core", branch: "master"
 
 # Use the development version of houston-commits
 gem "houston-commits", github: "houston/houston-commits", branch: "master"
-
-# Use the development version of houston-credentials
-gem "houston-credentials", github: "houston/houston-credentials", branch: "master"

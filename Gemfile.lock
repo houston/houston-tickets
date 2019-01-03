@@ -48,23 +48,12 @@ GIT
       thor
       uglifier (>= 2.7.2)
 
-GIT
-  remote: https://github.com/houston/houston-credentials.git
-  revision: aea052dc982375f5698db341bb8c56acf89e2470
-  branch: master
-  specs:
-    houston-credentials (0.0.1)
-      houston-core (>= 0.8.3)
-      strongbox (~> 0.7.2)
-
 PATH
   remote: .
   specs:
     houston-tickets (0.0.1)
-      boblail-unfuddle
       houston-commits
       houston-core (>= 0.8.0.pre)
-      houston-credentials
       houston-vestal_versions
 
 GEM
@@ -117,10 +106,6 @@ GEM
     attentive (0.3.9)
       concurrent-ruby
     bcrypt (3.1.12)
-    boblail-unfuddle (0.7.1)
-      activesupport
-      builder
-      faraday (>= 0.8, < 0.10)
     browser (2.3.0)
     builder (3.2.3)
     cancancan (1.16.0)
@@ -307,8 +292,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    strongbox (0.7.3)
-      activerecord
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -333,7 +316,6 @@ DEPENDENCIES
   factory_girl_rails
   houston-commits!
   houston-core!
-  houston-credentials!
   houston-tickets!
   minitest
   minitest-reporters

@@ -97,7 +97,7 @@ module Houston
           render json: ticket.errors, status: :unprocessable_entity
         end
       rescue Houston::Adapters::TicketTracker::Error
-        render json: {base: ["Unfuddle was unable to create this ticket:<br/>#{$!.message}"]}, status: :unprocessable_entity
+        render json: {base: ["#{@project.ticket_tracker_name} was unable to create this ticket:<br/>#{$!.message}"]}, status: :unprocessable_entity
       end
 
 

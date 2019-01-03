@@ -25,7 +25,7 @@ class SyncAllTicketsJob
   rescue Houston::Adapters::TicketTracker::InvalidQueryError
     query_error!(project)
   ensure
-    sleep 2 # give Unfuddle a break
+    sleep 2 # give backend a break
   end
 
 

@@ -1,8 +1,6 @@
 require "houston/tickets/engine"
 require "houston/tickets/configuration"
 require "houston/adapters/ticket_tracker"
-require "houston/credentials"
-require "unfuddle"
 require "vestal_versions"
 
 
@@ -11,7 +9,7 @@ module Houston
     extend self
 
     def dependencies
-      [ :commits, :credentials ]
+      [ :commits ]
     end
 
     def config(&block)
@@ -63,17 +61,6 @@ module Houston
 
   Houston.add_project_header_command :new_ticket do
     partial "houston/tickets/new_ticket"
-  end
-
-
-  #
-
-  Houston.accept_credentials_for "Unfuddle" do |login, password, errors|
-    begin
-      Unfuddle.with_config(username: login, password: password) { Unfuddle.instance.get("people/current") }
-    rescue Unfuddle::UnauthorizedError
-      errors.add(:base, "Invalid credentials")
-    end
   end
 
 end

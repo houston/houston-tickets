@@ -18,9 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir["test/**/*"]
 
   spec.add_dependency "houston-core", ">= 0.8.0.pre"
-  spec.add_dependency "boblail-unfuddle" # Implements Houston's TicketTracker::UnfuddleAdapter
   spec.add_dependency "houston-commits"
-  spec.add_dependency "houston-credentials"
   spec.add_dependency "houston-vestal_versions"
 
   spec.add_development_dependency "bundler"
