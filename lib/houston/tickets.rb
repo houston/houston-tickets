@@ -76,14 +76,4 @@ module Houston
     end
   end
 
-  Houston.accept_credentials_for "Github" do |login, password, errors|
-    begin
-      Octokit::Client.new(login: login, password: password).user
-    rescue Octokit::Forbidden
-      errors.add(:base, "Account locked")
-    rescue Octokit::Unauthorized
-      errors.add(:base, "Invalid credentials")
-    end
-  end
-
 end
