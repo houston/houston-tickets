@@ -45,7 +45,7 @@ class TicketTest < ActiveSupport::TestCase
 
     should "touch clear the closed_at timestamp" do
       ticket.reopen!
-      assert_equal nil, ticket.closed_at
+      assert_nil ticket.closed_at
     end
   end
 
